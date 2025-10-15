@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Particles from "../components/Particles";
-import { Link, Outlet, NavLink } from "react-router-dom";
+import PillNav from "../components/PillNav";
+import { Outlet, useLocation } from "react-router-dom";
 
 export default function MainLayout() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const location = useLocation();
 
   useEffect(() => {
     const stored = window.localStorage.getItem("theme");
@@ -26,9 +28,9 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="layout-container" style={{ position: "relative" }}>
+    <div className="layout-container" style={{ position: "relative", zIndex: 1 }}>
       <Particles className="global-particles" 
-          particleColors={['#ffffff', '#ffffff']}
+          particleColors={theme === "light" ? ['#000000', '#000000'] : ['#ffffff', '#ffffff']}
           particleCount={200}
           particleSpread={10}
           speed={0.1}
@@ -36,22 +38,30 @@ export default function MainLayout() {
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}/>
-      <header className="site-header">
-        <div className="brand">
-          <Link to="/" className="brand-link">Amanita</Link>
-        </div>
-        <nav className="nav">
-          <NavLink to="/" end className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
-          <NavLink to="/projects" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Projects</NavLink>
-          <button className="button" aria-label="Toggle theme" onClick={toggleTheme}>
-            {theme === "dark" ? "Light" : "Dark"}
-          </button>
-        </nav>
-      </header>
-      <main className="site-main">
+          <PillNav
+            logo={"./amanita.png"}
+            logoAlt="Amanita logo"
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'About', href: '/about' },
+              { label: 'Services', href: '/services' },
+              { label: 'Contact', href: '/contact' }
+            ]}
+             activeHref={location.pathname}
+            className="custom-nav"
+            ease="power2.easeOut"
+            baseColor="#000000"
+            pillColor="#ffffff"
+            hoveredPillTextColor="#ffffff"
+            pillTextColor="#000000"
+             showThemeToggle
+             theme={theme}
+             onToggleTheme={toggleTheme}
+          />
+      <main className="site-main" style={{ position: 'relative', zIndex: 1 }}>
         <Outlet />
       </main>
-      <footer className="site-footer">© {new Date().getFullYear()} Amanita</footer>
+      <footer className="site-footer" style={{ position: 'relative', zIndex: 1 }}>© {new Date().getFullYear()} Amanita</footer>
     </div>
   );
 }
