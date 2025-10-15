@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Particles from "../components/Particles";
-import PillNav from "../components/PillNav";
+// import PillNav from "../components/PillNav";
 import { Outlet, useLocation } from "react-router-dom";
 
 export default function MainLayout() {
@@ -38,13 +38,13 @@ export default function MainLayout() {
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}/>
-          <PillNav
+          {/* <PillNav
             logo={"./amanita.png"}
             logoAlt="Amanita logo"
             items={[
               { label: 'Home', href: '/' },
               { label: 'About', href: '/about' },
-              { label: 'Services', href: '/services' },
+              { label: 'Projects', href: '/projects' },
               { label: 'Contact', href: '/contact' }
             ]}
              activeHref={location.pathname}
@@ -54,10 +54,7 @@ export default function MainLayout() {
             pillColor="#ffffff"
             hoveredPillTextColor="#ffffff"
             pillTextColor="#000000"
-             showThemeToggle
-             theme={theme}
-             onToggleTheme={toggleTheme}
-          />
+          /> */}
       <main className="site-main" style={{ position: 'relative', zIndex: 1 }}>
         <Outlet />
       </main>

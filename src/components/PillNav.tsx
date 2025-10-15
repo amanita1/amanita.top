@@ -22,9 +22,6 @@ export interface PillNavProps {
   pillTextColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
-  showThemeToggle?: boolean;
-  theme?: 'light' | 'dark';
-  onToggleTheme?: () => void;
 }
 
 const PillNav: React.FC<PillNavProps> = ({
@@ -39,10 +36,7 @@ const PillNav: React.FC<PillNavProps> = ({
   hoveredPillTextColor = '#060010',
   pillTextColor,
   onMobileMenuClick,
-  initialLoadAnimation = true,
-  showThemeToggle = false,
-  theme,
-  onToggleTheme
+  initialLoadAnimation = true
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -134,13 +128,14 @@ const PillNav: React.FC<PillNavProps> = ({
       }
 
       if (navItems) {
-        gsap.set(navItems, { width: 0, overflow: 'hidden' });
-        gsap.to(navItems, {
-          width: 'auto',
-          duration: 0.6,
-          ease
-        });
-      }
+         gsap.set(navItems, { width: 0, overflow: 'hidden' });
+         gsap.to(navItems, {
+           width: 'auto',
+           duration: 0.6,
+           ease,
+           onComplete: () => { gsap.set(navItems, { overflow: 'visible' }); }
+         });
+       }
     }
 
     return () => window.removeEventListener('resize', onResize);
@@ -333,17 +328,6 @@ const PillNav: React.FC<PillNavProps> = ({
               </li>
             ))}
           </ul>
-          {/** Theme toggle on desktop */}
-          {showThemeToggle && (
-            <button
-              type="button"
-              className="pill-theme-toggle"
-              aria-label="Toggle theme"
-              onClick={onToggleTheme}
-            >
-              <span className="theme-emoji" aria-hidden="false">{(typeof window !== 'undefined' ? (document.documentElement.getAttribute('data-theme') === 'dark') : undefined) || theme === 'dark' ? '🌞' : '🌙'}</span>
-            </button>
-          )}
         </div>
 
         <button
@@ -359,21 +343,6 @@ const PillNav: React.FC<PillNavProps> = ({
 
       <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef} style={cssVars}>
         <ul className="mobile-menu-list">
-          {showThemeToggle && (
-            <li>
-              <button
-                type="button"
-                className="mobile-menu-link"
-                aria-label="Toggle theme"
-                onClick={() => {
-                  onToggleTheme?.();
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                {(typeof window !== 'undefined' ? (document.documentElement.getAttribute('data-theme') === 'dark') : undefined) || theme === 'dark' ? '🌞' : '🌙'}
-              </button>
-            </li>
-          )}
           {items.map(item => (
             <li key={item.href}>
               {isRouterLink(item.href) ? (

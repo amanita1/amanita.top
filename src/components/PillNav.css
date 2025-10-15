@@ -41,26 +41,14 @@
   display: flex;
   align-items: center;
   height: var(--nav-h);
-  background: var(--base, #000);
+  /* background: var(--base, #000); */
   border-radius: 9999px;
   padding: 3px;
-  gap: 3px;
+  gap: 10px;
   overflow: visible;
 }
 
-.pill-theme-toggle {
-  margin-left: 4px;
-  width: calc(var(--nav-h) - 6px);
-  height: calc(var(--nav-h) - 6px);
-  border-radius: 9999px;
-  border: none;
-  background: var(--pill-bg, #fff);
-  color: var(--pill-text, var(--base, #000));
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+
 
 .pill-theme-toggle .theme-emoji {
   font-size: 18px;
@@ -168,7 +156,7 @@
   transform: translateX(-50%);
   width: 12px;
   height: 12px;
-  background: var(--base, #000);
+  /* background: var(--base, #000); */
   border-radius: 50px;
   z-index: 4;
 }
