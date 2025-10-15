@@ -18,13 +18,15 @@ export default function Home() {
           handle="amanita"
           status="Online"
           contactText="Contact"
-          avatarUrl="/vite.svg"
-          miniAvatarUrl="/vite.svg"
+          avatarUrl="/amanita.png"
+          miniAvatarUrl="/amanita.png"
+          grainUrl = "/amanita.png"
           onContactClick={() => {
             window.location.href = "mailto:hello@amanita.top";
           }}
         />
       </div>
+      
     </section>
   );
 }

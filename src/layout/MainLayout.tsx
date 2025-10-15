@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Particles from "../components/Particles";
 import { Link, Outlet, NavLink } from "react-router-dom";
 
 export default function MainLayout() {
@@ -25,7 +26,16 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="layout-container">
+    <div className="layout-container" style={{ position: "relative" }}>
+      <Particles className="global-particles" 
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}/>
       <header className="site-header">
         <div className="brand">
           <Link to="/" className="brand-link">Amanita</Link>
