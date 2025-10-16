@@ -48,7 +48,7 @@ html[data-theme="light"] {
 
 .nav-link.active {
   color: var(--color-text);
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-underline-offset: 6px;
 }
 
@@ -145,3 +145,303 @@ html[data-theme="light"] {
   color: var(--color-muted);
 }
 
+/* ====== ТЕМА И ПАЛИТРА ====== */
+:root {
+  --bg: #0b0b0e;
+  --fg: #e7e7ea;
+  --muted: #a6a6ad;
+  --accent: hsl(278, 100%, 57%);
+  --glass-bg-1: rgba(12, 12, 16, 0.55);
+  --glass-bg-2: rgba(12, 12, 16, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 8px 30px rgba(0,0,0,.35);
+  --container-w: 1120px;
+}
+
+[data-theme="light"] {
+  --bg: #f7f8fb;
+  --fg: #141418;
+  --muted: #5a5a67;
+  --glass-bg-1: rgba(255, 255, 255, 0.65);
+  --glass-bg-2: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --shadow: 0 10px 32px rgba(0,0,0,.12);
+}
+
+
+
+/* ====== КОНТЕЙНЕР ====== */
+.container {
+  max-width: var(--container-w);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* ====== GLASS ПАНЕЛЬ ====== */
+.glass {
+  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(5px) saturate(100%);
+  -webkit-backdrop-filter: blur(5px) saturate(140%);
+}
+
+/* ====== HEADER ====== */
+.site-header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header {
+  height: 56px;
+  border-top: 0;           
+  border-radius: 0 0 14px 14px;
+}
+
+.site-header-inner {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Брендинг слева */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: .3px;
+  font-weight: 600;
+}
+.brand-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px 3px rgba(255,61,90,.45);
+}
+
+/* Навигация */
+.nav {
+  display: none;
+  gap: 6px;
+}
+@media (min-width: 640px) { .nav { display: flex; } }
+
+.nav-link {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .18s ease, background-color .18s ease, transform .18s ease;
+}
+.nav-link:hover { color: var(--fg); background: rgba(255,255,255,.05); }
+.nav-link.active { color: var(--fg); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 10px; right: 10px; bottom: -2px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 999px;
+}
+
+/* Кнопки справа */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.icon-btn {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background-color .18s ease, border-color .18s ease, transform .12s ease;
+}
+.icon-btn:hover {
+  background: rgba(255,255,255,.06);
+  border-color: var(--glass-border);
+}
+.icon-btn:active { transform: translateY(1px); }
+
+/* Подсветка под хедером */
+.header-glow {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(210, 61, 255, 0.35), transparent);
+}
+
+/* ====== FOOTER ====== */
+.site-footer {
+  /* margin-top: 48px; */
+  border-bottom: 0;        /* низ не нужен — “сливаем” в фон */
+  border-radius: 14px 14px 0 0;
+}
+.site-footer-inner {
+  padding: 18px 0;
+  display: flex;
+  row-gap: 10px;
+  column-gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--muted);
+  font-size: 14px;
+}
+@media (min-width: 640px) {
+  .site-footer-inner {
+    flex-direction: row;
+  }
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 14px;
+  transition: color .18s ease;
+}
+.footer-links a:hover { color: var(--fg); }
+
+.footer-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(140,140,150,.45), transparent);
+}
+
+/* мелкая эстетика */
+a { color: var(--accent); }
+
+
+.glitch {
+  position: absolute;
+  inset: 0;
+  color: var(--fg);
+  opacity: .7;
+  animation: glitch 1.2s infinite;
+  mix-blend-mode: screen;
+}
+@keyframes glitch {
+  0% { transform: translate(0); text-shadow: 0 0 transparent; }
+  20% { transform: translate(-1px, 1px); text-shadow: -2px 0 #f00, 2px 0 #0ff; }
+  40% { transform: translate(1px, -1px); text-shadow: -2px 0 #0ff, 2px 0 #f0f; }
+  60% { transform: translate(-1px, 0); text-shadow: 2px 0 #f0f, -2px 0 #0ff; }
+  80% { transform: translate(1px, 0); text-shadow: -2px 0 #f00, 2px 0 #0ff; }
+  100% { transform: translate(0); text-shadow: 0 0 transparent; }
+}
+
+
+
+
+
+
+.btn {
+  padding: 10px 14px; border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
+  color: var(--fg); text-decoration: none; cursor: pointer;
+  transition: transform .12s ease, background-color .2s ease, border-color .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn--primary {
+  background: linear-gradient(180deg, rgba(255, 61, 255, 0.25), rgba(239, 61, 255, 0.08));
+  border-color: rgba(216, 61, 255, 0.35);
+  box-shadow: 0 0 24px rgba(255, 61, 229, 0.18);
+}
+.btn--ghost { background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2)); }
+
+
+
+/* ====== ГРИДЫ/КАРТОЧКИ ====== */
+.grid-2 { display: grid; gap: 16px; }
+@media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+.card { border-radius: 16px; padding: 18px 16px; }
+.list { color: var(--muted); display: grid; gap: 6px; padding-left: 18px; }
+
+/* ====== SKILLS ====== */
+.skills { display: grid; gap: 16px; }
+.skills__area { display: grid; gap: 10px; }
+.skills__title { font-weight: 600; opacity: .85; }
+.skills__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 8px 10px; border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
+  box-shadow: var(--shadow); display: inline-flex; gap: 8px; align-items: center;
+  color: var(--fg);
+}
+.chip__dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* ====== CONTACT ====== */
+.cards-grid {
+  display: grid; gap: 12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.contact-content {
+  display: grid;
+  gap: 30px;
+  justify-items: center;      /* всё по центру */
+  text-align: center;         /* текст внутри карточек и формы по центру */
+}
+
+.cards-grid {
+  justify-content: center;    /* чтобы сетка не растягивалась */
+  max-width: 960px;           /* ограничим ширину блока */
+  width: 100%;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+}
+.contact-form label span {
+  text-align: left;
+}
+
+
+.social-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px; border-radius: 14px; text-decoration: none; color: var(--fg);
+  
+  transition: transform .12s ease, border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.social-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(152, 61, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(239, 61, 255, 0.15);
+  background: linear-gradient(180deg, rgba(216, 61, 255, 0.08), var(--glass-bg-2));
+}
+.social-card__icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: grid; place-items: center;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
+}
+.social-card__title { font-weight: 600; }
+.social-card__desc { font-size: 13px; color: var(--muted); }
+
+.contact-form {
+  border-radius: 16px; padding: 18px 16px; display: grid; gap: 12px; max-width: 560px;
+}
+.contact-form label { display: grid; gap: 6px; }
+.contact-form input, .contact-form textarea {
+  padding: 10px 12px; border-radius: 10px; outline: none;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.03);
+  color: var(--fg);
+}
+
+a:hover,
+a:focus {
+  color: #fff; 
+  text-decoration: none;
+} 

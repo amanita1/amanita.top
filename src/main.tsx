@@ -7,7 +7,13 @@ import "./styles/typography.css";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import ProfileCard from './components/ProfileCard.jsx';
+import "./styles/globals.css";
+import About from "./pages/About.js";
+import Contact from "./pages/Contact.js";
+import ErrorPage from "./pages/ErrorPage.js";
+import ApiPlayground from "./pages/ApiPlayground.js";
+
+
 
 const router = createBrowserRouter([
   {
@@ -15,6 +21,11 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/projects", element: <Projects /> },
+      { path: "/about", element: <About /> },
+      { path: "/Contact", element: <Contact /> },
+      { path: "/Error", element: <ErrorPage /> },
+      { path: "/ApiPlayground", element: <ApiPlayground /> },      
+      { path: "*", element: <ErrorPage /> },
     ],
   },
 ]);
