@@ -33,9 +33,25 @@ jobs:
       - name: Build
         run: npm run build
 
-      # SPA-роутинг на GitHub Pages: копируем index.html как 404.html
-      - name: SPA fallback
+      # Блокируем Jekyll (иначе пути с _ и ассеты могут чудить)
+      - name: Disable Jekyll
+        run: touch dist/.nojekyll
+
+      # Кастомный домен в артефакт
+      - name: Add CNAME
+        run: echo "amanita.top" > dist/CNAME
+
+      # SPA фоллбек для React Router
+      - name: SPA fallback (React Router)
         run: cp dist/index.html dist/404.html
+
+      # ⚠️ Диагностика: убеждаемся, что в dist/index.html нет /src/main.tsx
+      - name: Sanity check built HTML
+        run: |
+          echo "---- HEAD of dist/index.html ----"
+          head -n 30 dist/index.html
+          echo "---- Grep for /src/main ----"
+          ! grep -q "/src/main" dist/index.html || (echo "ERROR: dev entry found in dist/index.html" && exit 1)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
