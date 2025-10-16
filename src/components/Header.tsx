@@ -67,8 +67,8 @@ export default function SiteHeader() {
             </button>
           </div>
         </div>
-      </div>
             <div className="header-glow" />
+      </div>
 
       {/* Мобильное меню — рендерим всегда, но видно только на мобилке */}
       <div className={`mobile-panel ${open ? "open" : ""}`}>
