@@ -3,6 +3,10 @@ import Particles from "../components/Particles";
 import SiteHeader from "../components/Header";
 import SiteFooter from "../components/Footer";
 import { Outlet } from "react-router-dom";
+import { Helix } from 'ldrs/react'
+import 'ldrs/react/Helix.css'
+
+// Default values shown
 
 export default function MainLayout() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -27,7 +31,11 @@ export default function MainLayout() {
         alphaParticles={false}
         disableRotation={false}
       />
-
+      <Helix
+        size="45"
+        speed="2.5"
+        color="black" 
+      />
       <div className="relative" style={{ zIndex: 1 }}>
         <SiteHeader/>
         <main className="container" style={{ padding: "24px 0 40px" }}>
