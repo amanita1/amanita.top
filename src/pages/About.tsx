@@ -1,4 +1,3 @@
-import { Download, Mail, Github, Linkedin } from "lucide-react";
 type Skill = { name: string; level?: "basic" | "intermediate" | "advanced"; area?: string };
 
 const skills: Skill[] = [

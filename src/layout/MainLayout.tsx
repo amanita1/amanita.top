@@ -20,12 +20,7 @@ export default function MainLayout() {
     document.documentElement.setAttribute("data-theme", initial);
   }, []);
 
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    window.localStorage.setItem("theme", next);
-  };
+
 
   return (
     <div className="relative" style={{ minHeight: "100dvh", isolation: "isolate" }}>
