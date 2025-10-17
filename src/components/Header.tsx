@@ -28,7 +28,7 @@ export default function SiteHeader() {
             <span>Amanita</span>
           </div>
 
-          {/* Нав — как раньше (десктоп). На мобилке прячется через CSS */}
+          {/* Нав — десктоп */}
           <nav className="nav">
             {nav.map((item) => (
               <NavLink
@@ -43,7 +43,7 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          {/* Экшены — как раньше */}
+          {/* Экшены */}
           <div className="header-actions">
             <a
               href="https://github.com/amanita1"
@@ -56,36 +56,39 @@ export default function SiteHeader() {
               <Github size={18} />
             </a>
 
-            {/* Бургер — показывается только на мобилке через CSS */}
+            {/* Бургер */}
             <button
               className="mobile-toggle"
-              aria-label="Open menu"
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
+              aria-controls="mobile-panel"
               onClick={() => setOpen((v) => !v)}
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
-            <div className="header-glow" />
+
+        <div className="header-glow" />
       </div>
 
-      {/* Мобильное меню — рендерим всегда, но видно только на мобилке */}
-      <div className={`mobile-panel ${open ? "open" : ""}`}>
-        {nav.map((item) => (
-          <NavLink
-            key={item.href}
-            to={item.href}
-            className={({ isActive }) =>
-              `mobile-link${isActive ? " active" : ""}`
-            }
-            onClick={() => setOpen(false)}
-          >
-            {item.label}
-          </NavLink>
-        ))}
-      </div>
-
+      {/* Мобильное меню — рендерится только когда open === true */}
+      {open && (
+        <div id="mobile-panel" className="mobile-panel open">
+          {nav.map((item) => (
+            <NavLink
+              key={item.href}
+              to={item.href}
+              className={({ isActive }) =>
+                `mobile-link${isActive ? " active" : ""}`
+              }
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
