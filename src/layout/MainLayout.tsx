@@ -10,7 +10,7 @@ export default function MainLayout() {
   useEffect(() => {
     const stored = window.localStorage.getItem("theme");
     if (stored === "light" || stored === "dark") {
-      setTheme(stored);
+      setTheme("dark");
       document.documentElement.setAttribute("data-theme", stored);
       return;
     }
