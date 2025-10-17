@@ -6,18 +6,18 @@ const skills: Skill[] = [
   { name: "Spring Boot", level: "advanced", area: "Backend" },
   { name: "PostgreSQL", level: "intermediate", area: "DB" },
   { name: "MongoDB", level: "advanced", area: "DB" },
-  { name: "Docker", level: "basic", area: "DevOps" },
   { name: "C#", level: "basic", area: "Backend" },
-//   // FE
-//   { name: "React", level: "advanced", area: "Frontend" },
-//   { name: "TypeScript", level: "advanced", area: "Frontend" },
-//   { name: "Vite", level: "advanced", area: "Frontend" },
+  { name: "Docker", level: "basic", area: "DevOps" },
   // Bots / Tools
   { name: "Python", level: "intermediate", area: "Bots" },
   { name: "Telegram Bot API", level: "intermediate", area: "Bots" },
   // GameDev / Misc
   { name: "Unity", level: "intermediate", area: "GameDev" },
   { name: "Unity Particle System", level: "intermediate", area: "GameDev" },
+  // FE
+  { name: "React", level: "basic", area: "Frontend" },
+  { name: "TypeScript", level: "basic", area: "Frontend" },
+  { name: "Vite", level: "basic", area: "Frontend" },
 ];
 
 const levelColor: Record<NonNullable<Skill["level"]>, string> = {

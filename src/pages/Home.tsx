@@ -8,7 +8,7 @@ export default function Home() {
         <p className="hero-subtitle">Software Engineer | Game-Designer.</p>
         <div className="hero-cta" style={{ marginTop: 12 }}>
           <Link className="btn glass btn--primary primary herobtn" to="/projects">View Projects</Link>
-          <a className="button glass herobtn" href="mailto:amanita.rar@gmail.com">Contact</a>
+          <Link className="button glass herobtn" to="/contact">Contact</Link>
         </div>
       </div>
       <div className="hero-right" style={{ marginTop: 12 }}>
