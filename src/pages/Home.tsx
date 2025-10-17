@@ -1,6 +1,5 @@
-
 import ProfileCard from "../components/ProfileCard.jsx";
-
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <section className="hero">
@@ -8,8 +7,8 @@ export default function Home() {
         <h1 className="hero-title">Hi, I’m Amanita</h1>
         <p className="hero-subtitle">Software Engineer | Game-Designer.</p>
         <div className="hero-cta" style={{ marginTop: 12 }}>
-          <a className="btn glass btn--primary primary herobtn" href="/projects">View Projects</a>
-          <a className="button glass herobtn" href="amanita.rar@gmail.com">Contact</a>
+          <Link className="btn glass btn--primary primary herobtn" to="/projects">View Projects</Link>
+          <a className="button glass herobtn" href="mailto:amanita.rar@gmail.com">Contact</a>
         </div>
       </div>
       <div className="hero-right" style={{ marginTop: 12 }}>
