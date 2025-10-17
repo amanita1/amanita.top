@@ -86,6 +86,7 @@ export default function Contact() {
         </label>
         <button type="submit" className="btn btn--primary">Send</button>
       </form>
+      <div className="header-glow" />
     </div>
     </section>
   );

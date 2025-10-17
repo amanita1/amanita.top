@@ -24,7 +24,7 @@ export default function ApiPlayground() {
     <section className="container" style={{ display:"grid", gap:16 }}>
       <h1 style={{ fontSize:28, fontWeight:700 }}>API Playground</h1>
 
-      <div className="glass" style={{ borderRadius:16, padding:"18px 16px", display:"grid", gap:12 }}>
+      <div className="glass" style={{ borderRadius:16, padding:"18px 16px", display:"grid", gap:12, marginTop:290, marginBottom:290}}>
         <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
           <select value={method} onChange={e=>setMethod(e.target.value as any)}>
             <option>GET</option><option>POST</option>

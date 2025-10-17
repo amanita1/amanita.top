@@ -69,8 +69,8 @@ export default function SiteHeader() {
           </div>
         </div>
 
-        <div className="header-glow" />
       </div>
+      <div className="header-glow" />
 
       {/* Мобильное меню — рендерится только когда open === true */}
       {open && (
