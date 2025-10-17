@@ -8,14 +8,6 @@ export default function MainLayout() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
-    const stored = window.localStorage.getItem("theme");
-    if (stored === "light" || stored === "dark") {
-      setTheme("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
-      return;
-    }
-    const prefersLight = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-    const initial = prefersLight ? "light" : "dark";
     setTheme("dark");
     document.documentElement.setAttribute("data-theme", "dark");
   }, []);
