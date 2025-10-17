@@ -11,20 +11,19 @@ export default function MainLayout() {
     const stored = window.localStorage.getItem("theme");
     if (stored === "light" || stored === "dark") {
       setTheme("dark");
-      document.documentElement.setAttribute("data-theme", stored);
+      document.documentElement.setAttribute("data-theme", "dark");
       return;
     }
-    const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
+    const prefersLight = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
     const initial = prefersLight ? "light" : "dark";
-    setTheme(initial);
-    document.documentElement.setAttribute("data-theme", initial);
+    setTheme("dark");
+    document.documentElement.setAttribute("data-theme", "dark");
   }, []);
 
 
 
   return (
     <div className="relative" style={{ minHeight: "100dvh", isolation: "isolate" }}>
-      {/* фоновые частицы остаются позади */}
       <Particles
         className="global-particles"
         particleColors={theme === "light" ? ["#000000", "#000000"] : ["#ffffff", "#ffffff"]}
