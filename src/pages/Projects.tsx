@@ -5,6 +5,7 @@ type Project = {
   tags: string[];
   buttonEnabled: boolean; 
   wip: boolean,
+  mvp?: boolean;
   buttonVisible: Boolean;
 };
 
@@ -17,6 +18,16 @@ const projects: Project[] = [
     buttonEnabled: true,
     wip: false,
     buttonVisible: true,
+  },
+  {
+    title: "TooManyChats",
+    description: "Multitool for Telegram. Currently used for cleaning up your chat list.",
+    link: "https://toomanychats.amanita.top",
+    tags: ["Python3","Telethon", "TelegramAPI", "Node.js", "React"],
+    buttonEnabled: true,
+    wip: true,
+    buttonVisible: true,
+    mvp: true
   },
   {
     title: "My accountant",
@@ -32,15 +43,6 @@ const projects: Project[] = [
     description: "Dungerons and Dragons tool with lots of features. (Currenly only API realized)",
     link: "https://github.com/amanita1/",
     tags: ["Java", "SpringBoot", "JWT", "PostgreSQL", "Docker"],
-    buttonEnabled: true,
-    wip: true,
-    buttonVisible: true,
-  },
-  {
-    title: "Telecleaner",
-    description: "Multitool for Telegram. Now used for cleaning up your chat list.",
-    link: "https://github.com/amanita1/TeleCleaner",
-    tags: ["Python3", "TelegramAPI", "Electron", "Node.js", "React"],
     buttonEnabled: true,
     wip: true,
     buttonVisible: true,
@@ -78,14 +80,24 @@ export default function Projects() {
             <div className="flex items-center justify-between mb-2">
               <h2 className="project-title text-xl font-semibold">{p.title}</h2>
 
-              {p.wip && (
-                <span
-                  title="Work in progress"
-                  className="text-xs bg-yellow-500/10 text-yellow-400 rounded-md px-5 py-5"
-                >
-                  🧩 WIP
-                </span>
-              )}
+                <div className="flex gap-2">
+                    {p.mvp && (
+                        <span
+                            title="Minimum Viable Product"
+                            className="text-xs bg-green-500/10 text-green-400 rounded-md px-9 py-5"
+                        >
+      🚀 MVP
+    </span>
+                    )}
+                    {p.wip && (
+                        <span
+                            title="Work in progress"
+                            className="text-xs bg-yellow-500/10 text-yellow-400 rounded-md px-3 py-1"
+                        >
+      🧩 WIP
+    </span>
+                    )}
+                </div>
             </div>
 
             <p className="project-desc text-sm text-neutral-400 mb-3">
