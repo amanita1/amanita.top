@@ -13,7 +13,7 @@ const projects: Project[] = [
   {
     title: "Portfolio Site",
     description: "This site. Built with React 19 + Vite, minimal CSS, accessible UI.",
-    link: "https://amanita.top",
+    link: "https://me.amanita.top",
     tags: ["React", "Vite", "TypeScript"],
     buttonEnabled: true,
     wip: false,
@@ -22,7 +22,7 @@ const projects: Project[] = [
   {
     title: "Wishies",
     description: "Wishlist web-service and app.",
-    link: "https://github.com/amanita1/FinTrackBot/",
+    link: "https://wishies.amanita.top/",
     tags: ["FastApi", "React", "Vite", "TypeScript", "PostgreSQL"],
     buttonEnabled: true,
     wip: true,
