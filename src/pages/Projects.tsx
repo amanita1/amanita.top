@@ -20,6 +20,15 @@ const projects: Project[] = [
     buttonVisible: true,
   },
   {
+    title: "Wishies",
+    description: "Wishlist web-service and app.",
+    link: "https://github.com/amanita1/FinTrackBot/",
+    tags: ["FastApi", "React", "Vite", "TypeScript", "PostgreSQL"],
+    buttonEnabled: true,
+    wip: true,
+    buttonVisible: true,
+  },
+  {
     title: "TooManyChats",
     description: "Multitool for Telegram. Currently used for cleaning up your chat list.",
     link: "https://toomanychats.amanita.top",
@@ -28,15 +37,6 @@ const projects: Project[] = [
     wip: true,
     buttonVisible: true,
     mvp: true
-  },
-  {
-    title: "My accountant",
-    description: "Personal budget planner and tracker.",
-    link: "https://github.com/amanita1/FinTrackBot/",
-    tags: ["TelegramBot", "Python3", "aiogram", "MongoDB"],
-    buttonEnabled: true,
-    wip: true,
-    buttonVisible: true,
   },
   {
     title: "DnD ToolBox",
