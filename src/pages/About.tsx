@@ -39,7 +39,13 @@ export default function About() {
       <header style={{ display:"grid", gap:8 }}>
         <h1 style={{ fontSize:28, fontWeight:700 }}>About me</h1>
         <p style={{ color:"var(--muted)", maxWidth:800 }}>
-          Hi! I'm Amanita — Software Engineer with 2 year expirience in GameDev.
+          Hi! I'm a Technical/Game Designer with 2+ years of experience in mobile F2P games.
+
+          I’ve worked on live projects where I designed game systems, progression loops, in-game economies, live events, reward structures, and balancing spreadsheets. I also have hands-on experience with content implementation in Unity, config setup, and creating internal tools to improve production workflows.
+
+          Recently, I worked on systems for casual/idle projects, including meta progression, event economies, and retention-focused features.
+
+          In addition to game design, I have a programming background and build pet projects using C#, Python and React.
           I make things that are convenient to use.
         </p>
       </header>
